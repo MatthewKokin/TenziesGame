@@ -16,19 +16,19 @@ function App() {
   return arr;
 }
 
-  function hold(id){
-    const PickedEl = diesArr.find(die => die.id === id)
-    if (PickedEl.isPicked){
-      setPickedArr(oldVal => [...oldVal, PickedEl])
-    }else if(!PickedEl.isPicked){
-      setPickedArr(oldVal => oldVal.filter(die => die.id !== id))
+function pick(id){
+  setDiesArr(oldVal => {
+    const updatedDies = oldVal.map(die => die.id === id ? {...die, isPicked: !die.isPicked} : die);
+    const pickedDie = updatedDies.find(die => die.id === id);
+    if (pickedDie.isPicked){
+      setPickedArr(prevArr => [...prevArr, pickedDie])
+    } else {
+      setPickedArr(prevArr => prevArr.filter(die => die.id !== id))
     }
-  }
+    return updatedDies;
+  })
+}
 
-  function pick(id, value){
-    setDiesArr(oldVal => oldVal.map(die => die.id === id? {...die, isPicked: !die.isPicked}: die))
-    hold(id)
-  }
 
   //---------------
   useEffect(() => console.log(diesArr.filter(die => die.isPicked === true)), [diesArr])
