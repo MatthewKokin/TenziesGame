@@ -28,7 +28,7 @@ function App() {
   }
 
   const DiesEl = diesArr.map(die => {
-    return <Die key={die.id} id={die.id} value={die.num} handleClick={pick}/>
+    return <Die key={die.id} id={die.id} value={die.num} handleClick={pick} isPicked={die.isPicked}/>
   })
 
   return (
