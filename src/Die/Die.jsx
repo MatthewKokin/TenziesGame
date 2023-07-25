@@ -5,8 +5,8 @@ function Die(props) {
     const styles = {backgroundColor: pickState? "#59E391": "white"}
     return (
         <>
-            <div className='die-face' style={styles}>
-                <h2 className="die-num" onClick={()=> props.handleClick(props.id, props.value)}>{props.value}</h2>
+            <div className='die-face' style={styles} onClick={()=> props.handleClick(props.id, props.value)}>
+                <h2 className="die-num">{props.value}</h2>
             </div>
         </>
     )
