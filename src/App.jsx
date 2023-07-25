@@ -32,7 +32,7 @@ function App() {
   function generateNewDie() {
     return {
       num: Math.ceil(Math.random() * 6),
-      isHeld: false,
+      isPicked: false,
       id: nanoid()
     }
   }
