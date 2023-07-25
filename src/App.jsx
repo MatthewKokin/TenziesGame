@@ -3,6 +3,7 @@ import Die from './Die/Die'
 import { nanoid } from 'nanoid'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import Confetti from "react-confetti"
 
 function App() {
   const [diesArr, setDiesArr] = useState(getTenDies())
@@ -55,9 +56,14 @@ function App() {
   }
 
   function roll() {
-    setDiesArr(oldVal => {
-      return oldVal.map(die => die.isPicked ? die : generateNewDie())
-    })
+    if (!tenzies) {
+      setDiesArr(oldVal => {
+        return oldVal.map(die => die.isPicked ? die : generateNewDie())
+      })
+    } else {
+      setTenzies(false)
+      setDiesArr(getTenDies())
+    }
   }
 
   const DiesEl = diesArr.map(die => {
@@ -66,16 +72,15 @@ function App() {
 
   return (
     <>
-      {tenzies ? <p>You Won!!!</p> :
-        <div className='container'>
-          <h1>Tenzies</h1>
-          <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-          <div className='dice-container'>
-            {DiesEl}
-          </div>
-          <button onClick={roll}>Roll</button>
+      {tenzies && <Confetti />}
+      <div className='container'>
+        <h1>Tenzies</h1>
+        <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+        <div className='dice-container'>
+          {DiesEl}
         </div>
-      }
+        <button onClick={roll}> {tenzies ? "New Game" : "Roll"}</button>
+      </div>
     </>
   )
 }
