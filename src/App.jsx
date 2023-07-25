@@ -39,6 +39,16 @@ function App() {
     setDiesArr(oldArr => oldArr.map(die => die.isPicked ? die : generateNewDie()));
   }
 
+  function roll() {
+    if (!tenzies) {
+      setDiesArr(oldArr => oldArr.map(die => die.isPicked ? die : generateNewDie()))
+    } else {
+      setTenzies(false)
+      setDiesArr(getTenDies());
+    }
+  }
+  
+
   function playAudio() {
     audioRef.current = new Audio(sound);
     audioRef.current.loop = true;
@@ -54,8 +64,7 @@ function App() {
 
   function finishWinningAnimation(event) {
     if (tenzies && event.target) {
-      setTenzies(false)
-      stopAudio()
+      roll()
     }
   }
 
