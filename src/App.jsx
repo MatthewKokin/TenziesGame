@@ -7,22 +7,28 @@ import sound from './assets/win.mp3';
 import gif from './assets/winningGif.gif';
 
 function App() {
-  const [diesArr, setDiesArr] = useState(getTenDies())
-  const [tenzies, setTenzies] = useState(false)
+  // diceArray holds the state for all the dice
+  const [diceArray, setDiceArray] = useState(generateTenDice())
+  // gameWon state shows if the game has been won
+  const [gameWon, setGameWon] = useState(false)
+  // audioRef is a reference to the win sound
   const audioRef = useRef(null);
 
+  // useEffect that checks if the game is won after each dice roll
   useEffect(() => {
-    const pickedDies = diesArr.filter(die => die.isPicked)
-    if (pickedDies.length === 10) {
-      const isTenzies = diesArr.every(die => die.num === diesArr[0].num);
-      setTenzies(isTenzies);
+    const selectedDice = diceArray.filter(die => die.isPicked)
+    if (selectedDice.length === 10) {
+      const hasWon = diceArray.every(die => die.num === diceArray[0].num);
+      setGameWon(hasWon);
     }
-  }, [diesArr])
+  }, [diceArray])
 
-  function getTenDies() {
+  // Generates an array of 10 new dice
+  function generateTenDice() {
     return Array.from({ length: 10 }, generateNewDie);
   }
 
+  // Generates a new die with a random number and unique ID
   function generateNewDie() {
     return {
       num: Math.ceil(Math.random() * 6),
@@ -31,30 +37,29 @@ function App() {
     }
   }
 
-  function pick(id) {
-    setDiesArr(oldArr => oldArr.map(die => die.id === id ? { ...die, isPicked: !die.isPicked } : die));
+  // Updates the isPicked property of a die
+  function pickDie(id) {
+    setDiceArray(oldArr => oldArr.map(die => die.id === id ? { ...die, isPicked: !die.isPicked } : die));
   }
 
-  function roll() {
-    setDiesArr(oldArr => oldArr.map(die => die.isPicked ? die : generateNewDie()));
-  }
-
-  function roll() {
-    if (!tenzies) {
-      setDiesArr(oldArr => oldArr.map(die => die.isPicked ? die : generateNewDie()))
+  // Roll all dice that are not picked. If the game has been won, reset it.
+  function rollDice() {
+    if (!gameWon) {
+      setDiceArray(oldArr => oldArr.map(die => die.isPicked ? die : generateNewDie()))
     } else {
-      setTenzies(false)
-      setDiesArr(getTenDies());
+      setGameWon(false)
+      setDiceArray(generateTenDice());
     }
   }
-  
 
+  // Play the win sound
   function playAudio() {
     audioRef.current = new Audio(sound);
     audioRef.current.loop = true;
     audioRef.current.play();
   }
 
+  // Stop the win sound
   function stopAudio() {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -62,29 +67,40 @@ function App() {
     }
   }
 
+  // Ends the win animation and starts a new game
   function finishWinningAnimation(event) {
-    if (tenzies && event.target) {
-      roll()
+    if (gameWon && event.target) {
+      rollDice()
     }
   }
 
-  const DiesEl = diesArr.map(die => <Die key={die.id} id={die.id} value={die.num} handleClick={pick} isPicked={die.isPicked} />);
+  // Map the diceArray state to Die components
+  const diceElements = diceArray.map(die => 
+    <Die 
+      key={die.id} 
+      id={die.id} 
+      value={die.num} 
+      handleClick={pickDie} 
+      isPicked={die.isPicked} 
+    />
+  );
 
+  // Play or stop audio depending on gameWon state
   useEffect(() => {
-    tenzies ? playAudio() : stopAudio();
-  }, [tenzies]);
+    gameWon ? playAudio() : stopAudio();
+  }, [gameWon]);
 
   return (
     <>
-      {tenzies && <Confetti />}
-      {tenzies && <img src={gif} className='winning-img' alt="Winning celebration" />}
+      {gameWon && <Confetti />}
+      {gameWon && <img src={gif} className='winning-img' alt="Winning celebration" />}
       <div className='container' onClick={finishWinningAnimation}>
         <h1>Tenzies</h1>
         <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
         <div className='dice-container'>
-          {DiesEl}
+          {diceElements}
         </div>
-        <button onClick={roll}> {tenzies ? "New Game" : "Roll"}</button>
+        <button onClick={rollDice}> {gameWon ? "New Game" : "Roll"}</button>
       </div>
     </>
   )

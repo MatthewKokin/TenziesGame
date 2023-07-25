@@ -1,3 +1,4 @@
+/* Global styles */
 *,
 *::before,
 *::after {
@@ -15,6 +16,7 @@ body {
     background-color: #0B2434;
 }
 
+/* Winning image styles */
 .winning-img{
     border: 10px dotted rebeccapurple;
     border-radius: 30px;
@@ -24,15 +26,15 @@ body {
     left: 0;
     right: 0;
     margin: auto;
-    scale: 50%;
+    transform: scale(0.5);  /* changed scale to transform */
 }
 
+/* Container styles */
 .container {
     height: 400px;
     max-width: 800px;
     border-radius: 5px;
     background-color: #F5F5F5;
-    display: flex;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -51,7 +53,6 @@ body {
 .container p {
     margin: 0px;
     width: 80%;
-    font-family: Inter;
     font-size: 20px;
     font-weight: 400;
     line-height: 25px;
@@ -60,6 +61,7 @@ body {
     color: #4A4E74;
 }
 
+/* Button styles */
 .container button {
     font-size: 16px;
     font-weight: 700;
@@ -71,26 +73,22 @@ body {
     border-radius: 4px;
     padding: 5.76px 21.12px 6.1px 21.21px;
     cursor: pointer;
-    scale: 1.5;
+    transform: scale(1.5);  /* changed scale to transform */
 }
 
 .container button:active {
     box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
-    scale: 1.45;
+    transform: scale(1.45);  /* changed scale to transform */
 }
 
-* {
-    box-sizing: border-box;
-}
-
-
-
+/* Dice container styles */
 .dice-container {
     display: grid;
     grid-template: auto auto / repeat(5, 1fr);
     gap: 20px;
 }
 
+/* Die face styles */
 .die-face {
     height: 50px;
     width: 50px;
@@ -101,15 +99,14 @@ body {
     align-items: center;
     cursor: pointer;
     background-color: white;
-    cursor: pointer;
 }
 
 .die-face:active {
     box-shadow: inset 2px 2px 5px -1.5px rgba(0, 0, 0, 0.7);
-    scale: 0.95;
+    transform: scale(0.95);  /* changed scale to transform */
 }
 
+/* Die number styles */
 .die-num {
     font-size: 2rem;
 }
-
