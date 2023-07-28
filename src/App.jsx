@@ -1,10 +1,10 @@
 import './App.css'
 import Die from './Die/Die'
-import { nanoid } from 'nanoid'
 import { useEffect, useRef, useState } from 'react'
 import Confetti from "react-confetti"
 import sound from './assets/win.mp3';
 import gif from './assets/winningGif.gif';
+import {generateTenDice, generateNewDie} from './utils'
 
 function App() {
   // diceArray holds the state for all the dice
@@ -27,20 +27,6 @@ function App() {
       clearInterval(timer.current) // stop timer using .current
     }
   }, [diceArray])
-
-  // Generates an array of 10 new dice
-  function generateTenDice() {
-    return Array.from({ length: 10 }, generateNewDie);
-  }
-
-  // Generates a new die with a random number and unique ID
-  function generateNewDie() {
-    return {
-      num: Math.ceil(Math.random() * 6),
-      isPicked: false,
-      id: nanoid()
-    }
-  }
 
   // Updates the isPicked property of a die
   function pickDie(id) {
