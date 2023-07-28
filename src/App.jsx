@@ -5,6 +5,7 @@ import Confetti from "react-confetti"
 import sound from './assets/win.mp3';
 import gif from './assets/winningGif.gif';
 import {generateTenDice, generateNewDie} from './utils'
+import Timer from './Timer/Timer';
 
 function App() {
   // diceArray holds the state for all the dice
@@ -116,6 +117,7 @@ function App() {
           gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
         <h2>{rollCount}</h2>
         <p id="timer">0.000</p>
+        <Timer timer={timer} startTime={startTime} gameWon={gameWon}/>
       </div>
     </>
   )
