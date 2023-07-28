@@ -10,7 +10,7 @@ function App() {
   // diceArray holds the state for all the dice
   const [diceArray, setDiceArray] = useState(generateTenDice())
   // gameWon state shows if the game has been won
-  const [gameWon, setGameWon] = useState(false)
+  const [gameWon, setGameWon] = useState(null)
   // audioRef is a reference to the win sound
   const [rollCount, setRollCount] = useState(0)
   const audioRef = useRef(null)
@@ -45,13 +45,16 @@ function App() {
 
   // Roll all dice that are not picked. If the game has been won, reset it.
   function rollDice() {
-    setRollCount(old => old+1)
-    if (!gameWon) {
-      setDiceArray(oldArr => oldArr.map(die => die.isPicked ? die : generateNewDie()))
-    } else {
-      setRollCount(0)
+    if(gameWon===null){
       setGameWon(false)
       setDiceArray(generateTenDice());
+    }
+    else if(!gameWon) {
+      setDiceArray(oldArr => oldArr.map(die => die.isPicked ? die : generateNewDie()))
+      setRollCount(old => old+1)
+    } else if(gameWon) {
+      setRollCount(0)
+      setGameWon(null)
     }
   }
 
@@ -103,7 +106,8 @@ function App() {
         <div className='dice-container'>
           {diceElements}
         </div>
-        <button onClick={rollDice}> {gameWon ? "New Game" : "Roll"}</button>
+        <button onClick={rollDice}> {
+        gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
         <h2>{rollCount}</h2>
       </div>
     </>
