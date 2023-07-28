@@ -1,8 +1,8 @@
-import './App.css'
-import Die from './Die/Die'
-import { nanoid } from 'nanoid'
-import { useEffect, useRef, useState } from 'react'
-import Confetti from "react-confetti"
+import './App.css';
+import Die from './Die/Die';
+import { nanoid } from 'nanoid';
+import { useEffect, useRef, useState } from 'react';
+import Confetti from "react-confetti";
 import sound from './assets/win.mp3';
 import gif from './assets/winningGif.gif';
 
@@ -14,14 +14,19 @@ function App() {
   // audioRef is a reference to the win sound
   const audioRef = useRef(null);
 
-  // useEffect that checks if the game is won after each dice roll
+  // useEffect that checks if the game is won after each dice roll, otherwise AI rolls again
   useEffect(() => {
-    const selectedDice = diceArray.filter(die => die.isPicked)
-    if (selectedDice.length === 10) {
-      const hasWon = diceArray.every(die => die.num === diceArray[0].num);
-      setGameWon(hasWon);
-    }
+    const hasWon = diceArray.every(die => die.num === diceArray[0].num);
+    setGameWon(hasWon);
+    //----------------Change--------------
+    if (hasWon) return; // stop AI turns after winning
+    setTimeout(AITurn, 100); // AI turn 1 second after roll
+    //----------------Change--------------
   }, [diceArray])
+
+  useEffect(() => {
+    gameWon ? playAudio() : stopAudio();
+  }, [gameWon]);
 
   // Generates an array of 10 new dice
   function generateTenDice() {
@@ -35,11 +40,6 @@ function App() {
       isPicked: false,
       id: nanoid()
     }
-  }
-
-  // Updates the isPicked property of a die
-  function pickDie(id) {
-    setDiceArray(oldArr => oldArr.map(die => die.id === id ? { ...die, isPicked: !die.isPicked } : die));
   }
 
   // Roll all dice that are not picked. If the game has been won, reset it.
@@ -58,7 +58,6 @@ function App() {
     audioRef.current.loop = true;
     audioRef.current.play();
   }
-
   // Stop the win sound
   function stopAudio() {
     if (audioRef.current) {
@@ -67,28 +66,43 @@ function App() {
     }
   }
 
-  // Ends the win animation and starts a new game
+   // Ends the win animation and starts a new game
   function finishWinningAnimation(event) {
     if (gameWon && event.target) {
       rollDice()
     }
   }
 
-  // Map the diceArray state to Die components
+  //----------------Change--------------
+  function AITurn() {
+    // If the AI has not started picking numbers yet
+    if (!diceArray.some(die => die.isPicked)) {
+      let counts = Array(7).fill(0); //Create [0, 0, 0, 0, 0, 0, 0]
+      for (let die of diceArray) {
+        //Then by looking at the diceArray array it will count how many dice of each value there are
+        counts[die.num]++; 
+      }
+      let maxCount = Math.max(...counts);
+      let mostCommonNumber = counts.indexOf(maxCount);
+      setDiceArray(oldArr => oldArr.map(die => die.num === mostCommonNumber ? { ...die, isPicked: true } : die));
+    }
+    // If the AI has started picking numbers
+    else {
+      let pickedNumber = diceArray.find(die => die.isPicked).num;
+      setDiceArray(oldArr => oldArr.map(die => die.num === pickedNumber && !die.isPicked ? { ...die, isPicked: true } : die));
+    }
+    setTimeout(rollDice, 100);  // roll dice 0.1 second after AI turn
+  }  
+  //----------------Change--------------
+
   const diceElements = diceArray.map(die => 
     <Die 
       key={die.id} 
       id={die.id} 
       value={die.num} 
-      handleClick={pickDie} 
       isPicked={die.isPicked} 
     />
   );
-
-  // Play or stop audio depending on gameWon state
-  useEffect(() => {
-    gameWon ? playAudio() : stopAudio();
-  }, [gameWon]);
 
   return (
     <>
