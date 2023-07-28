@@ -14,13 +14,17 @@ function App() {
   // audioRef is a reference to the win sound
   const [rollCount, setRollCount] = useState(0)
   const audioRef = useRef(null)
-  
+
+  const timer = useRef(null) // define timer outside rollDice function using useRef
+  const startTime = useRef(null)
+
   // useEffect that checks if the game is won after each dice roll
   useEffect(() => {
     const selectedDice = diceArray.filter(die => die.isPicked)
     if (selectedDice.length === 10) {
-      const hasWon = diceArray.every(die => die.num === diceArray[0].num);
-      setGameWon(hasWon);
+      const hasWon = diceArray.every(die => die.num === diceArray[0].num)
+      setGameWon(hasWon)
+      clearInterval(timer.current) // stop timer using .current
     }
   }, [diceArray])
 
@@ -43,20 +47,36 @@ function App() {
     setDiceArray(oldArr => oldArr.map(die => die.id === id ? { ...die, isPicked: !die.isPicked } : die));
   }
 
+  function startTimer() {
+    startTime.current = Date.now();
+    timer.current = setInterval(() => {
+      const elapsedMilliseconds = Date.now() - startTime.current;
+      const elapsedSeconds = elapsedMilliseconds / 1000;
+      document.getElementById('timer').innerHTML = elapsedSeconds.toFixed(3); 
+    }, 1); 
+  }
+  
+
   // Roll all dice that are not picked. If the game has been won, reset it.
   function rollDice() {
+    //🥳New game state
     if(gameWon===null){
       setGameWon(false)
       setDiceArray(generateTenDice());
+      startTimer();  // calling the startTimer function here 
     }
-    else if(!gameWon) {
+    //🎲 Roll state
+    else if (!gameWon) {
       setDiceArray(oldArr => oldArr.map(die => die.isPicked ? die : generateNewDie()))
-      setRollCount(old => old+1)
-    } else if(gameWon) {
+      setRollCount(old => old + 1)
+    }
+    // 🥲 Finish state
+    else if (gameWon) {
       setRollCount(0)
       setGameWon(null)
     }
   }
+
 
   // Play the win sound
   function playAudio() {
@@ -81,13 +101,13 @@ function App() {
   }
 
   // Map the diceArray state to Die components
-  const diceElements = diceArray.map(die => 
-    <Die 
-      key={die.id} 
-      id={die.id} 
-      value={die.num} 
-      handleClick={pickDie} 
-      isPicked={die.isPicked} 
+  const diceElements = diceArray.map(die =>
+    <Die
+      key={die.id}
+      id={die.id}
+      value={die.num}
+      handleClick={pickDie}
+      isPicked={die.isPicked}
     />
   );
 
@@ -107,8 +127,9 @@ function App() {
           {diceElements}
         </div>
         <button onClick={rollDice}> {
-        gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
+          gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
         <h2>{rollCount}</h2>
+        <p id="timer">0.000</p>
       </div>
     </>
   )
