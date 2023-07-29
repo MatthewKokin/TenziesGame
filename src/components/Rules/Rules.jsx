@@ -1,7 +1,8 @@
+import "./Rules.css"
 function Rules() {
     return (
         <>
-            <div>
+            <div className="lay">
                 <h2>Rules section</h2>
             </div>
         </>
