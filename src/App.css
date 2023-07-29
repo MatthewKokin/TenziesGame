@@ -46,11 +46,21 @@ body {
 }
 
 .stats{
-    border: 1px solid green;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.play-area{
+    /* border: 1px solid green; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #D3CDFE;
+    padding: 30px;
+    border-radius: 10px;
 }
 
 

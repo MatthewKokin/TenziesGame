@@ -15,4 +15,6 @@
     border: none;
     border-radius: 4px;
     padding: 5.76px 21.12px 6.1px 21.21px;
+    width: 180px; /* Fixed width - adjust as needed */
+    display: inline-block;
 }

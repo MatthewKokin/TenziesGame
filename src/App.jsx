@@ -117,15 +117,17 @@ function App() {
       <div className='container' onClick={finishWinningAnimation}>
         <h1>Tenzies</h1>
         <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-        <div className='dice-container'>
-          {diceElements}
+        <div className='play-area'>
+          <div className='dice-container'>
+            {diceElements}
+          </div>
+          <div className='stats'>
+            <Timer handleClick={rollDice} isRunning={isRunning} />
+            <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
+          </div>
         </div>
         <button onClick={rollDice}> {
           gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
-      </div>
-      <div className='stats'>
-        <Timer handleClick={rollDice} isRunning={isRunning} />
-        <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
       </div>
     </div>
   )
