@@ -13,10 +13,10 @@ function Home() {
   // gameWon state shows if the game has been won
   const [gameWon, setGameWon] = useState(null)
   // audioRef is a reference to the win sound
-  const [rollCount, setRollCount] = useState(0)
   const audioRef = useRef(null)
-
-  const [isRunning, setIsRunning] = useState(null);
+  
+  const [rollCount, setRollCount] = useState(0)
+  const [isRunning, setIsRunning] = useState(null)
 
   // useEffect that checks if the game is won after each dice roll
   useEffect(() => {
