@@ -4,8 +4,8 @@ import Confetti from "react-confetti"
 import sound from '../../assets/win.mp3';
 import gif from '../../assets/winningGif.gif';
 import { generateTenDice, generateNewDie } from '../../utils'
-import Die from '../../Die/Die';
-import Timer from '../../Timer/Timer';
+import Die from '../Die/Die';
+import Timer from '../Timer/Timer';
 
 function Home() {
   // diceArray holds the state for all the dice

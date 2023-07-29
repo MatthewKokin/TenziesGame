@@ -8,11 +8,12 @@ import Home from './components/Home/Home';
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/leaderboard">Leaderboard</Link>
-        <Link to="/computer">Computer</Link>
-        <Link to="/ruler">Rules</Link>
+      <nav className='navbar nav-custom'>
+        <h2 className='nav-link badge bg-primary logo'>Tenzies</h2>
+        <Link to="/" className='nav-link'>Home</Link>
+        <Link to="/leaderboard" className='nav-link'>Leaderboard</Link>
+        <Link to="/computer" className='nav-link'>Computer</Link>
+        <Link to="/ruler" className='nav-link'>Rules</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />

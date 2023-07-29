@@ -1,0 +1,20 @@
+.nav-custom{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #D3CDFE;
+    border-radius: 5px 5px 0 0;
+}
+
+.logo {
+    font-size: 28px; /* Increase the font size */
+    font-weight: bold; /* Make the text bold */
+    letter-spacing: 2px; /* Add some space between letters */
+    color: #fff; /* Change the text color */
+    background-color: #5035FF; /* Background color */
+    padding: 10px 20px; /* Add padding around the text */
+    border-radius: 5px; /* Optional rounded corners */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional text shadow for depth */
+    margin: 0;
+  }
+  
