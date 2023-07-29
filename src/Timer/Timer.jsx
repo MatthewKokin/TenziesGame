@@ -28,7 +28,7 @@ function Timer({ isRunning }) {
   const time = (passedTime / 1000).toFixed(3)
 
   return (
-    <div className='container'>
+    <div>
       <div className="cloader">
         <div className="clface">
           <div className="clsface">
