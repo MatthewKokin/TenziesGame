@@ -18,21 +18,6 @@ function Home() {
 
   const [isRunning, setIsRunning] = useState(null);
 
-  // function handleClick(){
-  //  //null means the timer is stopped but not reset
-  //   if(isRunning === null){
-  //     setIsRunning(false)
-  //   }
-  //   //false means the timer is not running and reset.
-  //   else if(!isRunning){
-  //     setIsRunning(true)
-  //   }
-  //   //true means the timer is running
-  //   else{
-  //     setIsRunning(null)
-  //   }
-  // }
-
   // useEffect that checks if the game is won after each dice roll
   useEffect(() => {
     const selectedDice = diceArray.filter(die => die.isPicked)
@@ -70,7 +55,6 @@ function Home() {
       setGameWon(null)
     }
   }
-
 
   // Play the win sound
   function playAudio() {

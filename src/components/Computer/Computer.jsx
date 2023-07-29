@@ -1,7 +1,8 @@
+import "./Computer.css"
 function Computer() {
     return (
         <>
-            <div>
+            <div className="lay">
                 <h2>Computer 😎</h2>
             </div>
         </>
