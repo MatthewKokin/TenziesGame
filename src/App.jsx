@@ -6,6 +6,7 @@ import sound from './assets/win.mp3';
 import gif from './assets/winningGif.gif';
 import { generateTenDice, generateNewDie } from './utils'
 import Timer from './Timer/Timer';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
 function App() {
   // diceArray holds the state for all the dice
@@ -111,25 +112,39 @@ function App() {
   }, [gameWon]);
 
   return (
-    <div className='lay'>
-      {gameWon && <Confetti />}
-      {gameWon && <img src={gif} className='winning-img' alt="Winning celebration" />}
-      <div className='container' onClick={finishWinningAnimation}>
-        <h1>Tenzies</h1>
-        <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-        <div className='play-area'>
-          <div className='dice-container'>
-            {diceElements}
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/board">Leaderboard</Link>
+        <Link to="/computer">Computer</Link>
+        <Link to="/ruler">Rules</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={< />} />
+      </Routes>
+
+
+      <div className='lay'>
+        {gameWon && <Confetti />}
+        {gameWon && <img src={gif} className='winning-img' alt="Winning celebration" />}
+        <div className='container' onClick={finishWinningAnimation}>
+          <h1>Tenzies</h1>
+          <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+          <div className='play-area'>
+            <div className='dice-container'>
+              {diceElements}
+            </div>
+            <div className='stats'>
+              <Timer handleClick={rollDice} isRunning={isRunning} />
+              <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
+            </div>
           </div>
-          <div className='stats'>
-            <Timer handleClick={rollDice} isRunning={isRunning} />
-            <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
-          </div>
+          <button onClick={rollDice}> {
+            gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
         </div>
-        <button onClick={rollDice}> {
-          gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
       </div>
-    </div>
+    </BrowserRouter>
   )
 }
 
