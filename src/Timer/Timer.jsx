@@ -29,20 +29,7 @@ function Timer({ isRunning }) {
 
   return (
     <div>
-      <div className="cloader">
-        <div className="clface">
-          <div className="clsface">
-            <div id="h2" className="hand"></div>
-          </div>
-          <div className="top"></div>
-          <div className="bottom"></div>
-          <div className="left"></div>
-          <div className="right"></div>
-          <div id="sub" className="pin"></div>
-          <div id="h1" className="hand"></div>
-          <div id="main" className="pin"></div>
-        </div>
-      </div>
+      <h2>Time</h2>
       <p>{time}</p>
     </div>
   )
