@@ -1,38 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'; // Don't forget to import React
 import './Timer.css'
 
-function Timer({ gameWon }) {
-    const [elapsedTime, setElapsedTime] = useState(0);
-    const startTime = useRef(null);
-    const timer = useRef(null);
+function Timer({isRunning}) {
+  const [passedTime, setPassedTime] = useState(0);
 
-    function startTimer() {
-        startTime.current = Date.now();
-        timer.current = setInterval(() => {
-          const elapsedMilliseconds = Date.now() - startTime.current;
-          const elapsedSeconds = elapsedMilliseconds / 1000;
-          setElapsedTime(elapsedSeconds.toFixed(3));
-        }, 1); 
+  useEffect(() => {
+    let interval;
+    if (isRunning) {
+      const startTime = Date.now() - passedTime;
+      interval = setInterval(() => {
+        setPassedTime(Date.now() - startTime);
+      }, 1);
+    } else if (isRunning === false) {
+      clearInterval(interval);
+      setPassedTime(0); // Reset timer if stopped
     }
 
-    // cleanup function
-    useEffect(() => {
-        return () => {
-            if (timer.current) {
-                clearInterval(timer.current);
-            }
-        }
-    }, []);
+    return () => clearInterval(interval);
+  }, [isRunning, passedTime]);
 
-    useEffect(() => {
-        if(gameWon === null) {
-            startTimer();
-        }
-    }, [gameWon]);
+  const time = (passedTime / 1000).toFixed(3);
 
-    return (
-        <p>{elapsedTime}</p>
-    )
+  return (
+    <div className='container'>
+      <p>{time}</p>
+    </div>
+  )
 }
 
 export default Timer;

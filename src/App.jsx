@@ -16,8 +16,22 @@ function App() {
   const [rollCount, setRollCount] = useState(0)
   const audioRef = useRef(null)
 
-  const timer = useRef(null) // define timer outside rollDice function using useRef
-  const startTime = useRef(null)
+  const [isRunning, setIsRunning] = useState(null);
+
+  // function handleClick(){
+  //  //null means the timer is stopped but not reset
+  //   if(isRunning === null){
+  //     setIsRunning(false)
+  //   }
+  //   //false means the timer is not running and reset.
+  //   else if(!isRunning){
+  //     setIsRunning(true)
+  //   }
+  //   //true means the timer is running
+  //   else{
+  //     setIsRunning(null)
+  //   }
+  // }
 
   // useEffect that checks if the game is won after each dice roll
   useEffect(() => {
@@ -25,7 +39,8 @@ function App() {
     if (selectedDice.length === 10) {
       const hasWon = diceArray.every(die => die.num === diceArray[0].num)
       setGameWon(hasWon)
-      clearInterval(timer.current) // stop timer using .current
+      setIsRunning(null)
+      // clearInterval(timer.current) // stop timer using .current
     }
   }, [diceArray])
 
@@ -34,23 +49,14 @@ function App() {
     setDiceArray(oldArr => oldArr.map(die => die.id === id ? { ...die, isPicked: !die.isPicked } : die));
   }
 
-  function startTimer() {
-    startTime.current = Date.now();
-    timer.current = setInterval(() => {
-      const elapsedMilliseconds = Date.now() - startTime.current;
-      const elapsedSeconds = elapsedMilliseconds / 1000;
-      document.getElementById('timer').innerHTML = elapsedSeconds.toFixed(3); 
-    }, 1); 
-  }
-  
-
   // Roll all dice that are not picked. If the game has been won, reset it.
   function rollDice() {
     //🥳New game state
     if(gameWon===null){
       setGameWon(false)
       setDiceArray(generateTenDice());
-      startTimer();  // calling the startTimer function here 
+      setIsRunning(true)
+      // startTimer();  // calling the startTimer function here 
     }
     //🎲 Roll state
     else if (!gameWon) {
@@ -59,6 +65,7 @@ function App() {
     }
     // 🥲 Finish state
     else if (gameWon) {
+      setIsRunning(false)
       setRollCount(0)
       setGameWon(null)
     }
@@ -116,8 +123,7 @@ function App() {
         <button onClick={rollDice}> {
           gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
         <h2>{rollCount}</h2>
-        <p id="timer">0.000</p>
-        <Timer timer={timer} startTime={startTime} gameWon={gameWon}/>
+        <Timer handleClick={rollDice} isRunning={isRunning} />
       </div>
     </>
   )
