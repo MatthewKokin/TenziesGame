@@ -11,7 +11,6 @@ body {
     padding: 20px;
     margin: 0;
     display: flex;
-    align-items: flex-start;
     justify-content: center;
     background-color: #0B2434;
 }
@@ -26,20 +25,44 @@ body {
     left: 0;
     right: 0;
     margin: auto;
-    transform: scale(0.5);  /* changed scale to transform */
+    transform: scale(0.5); 
 }
-
+/* Basically make sure that you style components in their css or link them to App.css as well */
 /* Container styles */
 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.lay{
+    display: flex;
+    border: 1px solid red;
     height: 400px;
     max-width: 800px;
     border-radius: 5px;
     background-color: #F5F5F5;
+}
+
+.stats{
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
+    justify-content: center;
 }
+
+.play-area{
+    /* border: 1px solid green; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #D3CDFE;
+    padding: 30px;
+    border-radius: 10px;
+}
+
 
 .container h1 {
     margin: 0px;
@@ -62,7 +85,7 @@ body {
 }
 
 /* Button styles */
-.container button {
+.container button, .rolls {
     font-size: 16px;
     font-weight: 700;
     line-height: 19px;
@@ -72,8 +95,12 @@ body {
     border: none;
     border-radius: 4px;
     padding: 5.76px 21.12px 6.1px 21.21px;
+      /* changed scale to transform */
+}
+
+.container button {
     cursor: pointer;
-    transform: scale(1.5);  /* changed scale to transform */
+    transform: scale(1.5);
 }
 
 .container button:active {
@@ -81,32 +108,4 @@ body {
     transform: scale(1.45);  /* changed scale to transform */
 }
 
-/* Dice container styles */
-.dice-container {
-    display: grid;
-    grid-template: auto auto / repeat(5, 1fr);
-    gap: 20px;
-}
 
-/* Die face styles */
-.die-face {
-    height: 50px;
-    width: 50px;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    background-color: white;
-}
-
-.die-face:active {
-    box-shadow: inset 2px 2px 5px -1.5px rgba(0, 0, 0, 0.7);
-    transform: scale(0.95);  /* changed scale to transform */
-}
-
-/* Die number styles */
-.die-num {
-    font-size: 2rem;
-}
