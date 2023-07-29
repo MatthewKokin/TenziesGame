@@ -1,41 +1,48 @@
 import './App.css'
 import Die from './Die/Die'
-import { nanoid } from 'nanoid'
 import { useEffect, useRef, useState } from 'react'
 import Confetti from "react-confetti"
 import sound from './assets/win.mp3';
 import gif from './assets/winningGif.gif';
+import { generateTenDice, generateNewDie } from './utils'
+import Timer from './Timer/Timer';
 
 function App() {
   // diceArray holds the state for all the dice
   const [diceArray, setDiceArray] = useState(generateTenDice())
   // gameWon state shows if the game has been won
-  const [gameWon, setGameWon] = useState(false)
+  const [gameWon, setGameWon] = useState(null)
   // audioRef is a reference to the win sound
-  const audioRef = useRef(null);
+  const [rollCount, setRollCount] = useState(0)
+  const audioRef = useRef(null)
+
+  const [isRunning, setIsRunning] = useState(null);
+
+  // function handleClick(){
+  //  //null means the timer is stopped but not reset
+  //   if(isRunning === null){
+  //     setIsRunning(false)
+  //   }
+  //   //false means the timer is not running and reset.
+  //   else if(!isRunning){
+  //     setIsRunning(true)
+  //   }
+  //   //true means the timer is running
+  //   else{
+  //     setIsRunning(null)
+  //   }
+  // }
 
   // useEffect that checks if the game is won after each dice roll
   useEffect(() => {
     const selectedDice = diceArray.filter(die => die.isPicked)
     if (selectedDice.length === 10) {
-      const hasWon = diceArray.every(die => die.num === diceArray[0].num);
-      setGameWon(hasWon);
+      const hasWon = diceArray.every(die => die.num === diceArray[0].num)
+      setGameWon(hasWon)
+      setIsRunning(null)
+      // clearInterval(timer.current) // stop timer using .current
     }
   }, [diceArray])
-
-  // Generates an array of 10 new dice
-  function generateTenDice() {
-    return Array.from({ length: 10 }, generateNewDie);
-  }
-
-  // Generates a new die with a random number and unique ID
-  function generateNewDie() {
-    return {
-      num: Math.ceil(Math.random() * 6),
-      isPicked: false,
-      id: nanoid()
-    }
-  }
 
   // Updates the isPicked property of a die
   function pickDie(id) {
@@ -44,13 +51,26 @@ function App() {
 
   // Roll all dice that are not picked. If the game has been won, reset it.
   function rollDice() {
-    if (!gameWon) {
-      setDiceArray(oldArr => oldArr.map(die => die.isPicked ? die : generateNewDie()))
-    } else {
+    //🥳New game state
+    if (gameWon === null) {
       setGameWon(false)
       setDiceArray(generateTenDice());
+      setIsRunning(true)
+      // startTimer();  // calling the startTimer function here 
+    }
+    //🎲 Roll state
+    else if (!gameWon) {
+      setDiceArray(oldArr => oldArr.map(die => die.isPicked ? die : generateNewDie()))
+      setRollCount(old => old + 1)
+    }
+    // 🥲 Finish state
+    else if (gameWon) {
+      setIsRunning(false)
+      setRollCount(0)
+      setGameWon(null)
     }
   }
+
 
   // Play the win sound
   function playAudio() {
@@ -75,13 +95,13 @@ function App() {
   }
 
   // Map the diceArray state to Die components
-  const diceElements = diceArray.map(die => 
-    <Die 
-      key={die.id} 
-      id={die.id} 
-      value={die.num} 
-      handleClick={pickDie} 
-      isPicked={die.isPicked} 
+  const diceElements = diceArray.map(die =>
+    <Die
+      key={die.id}
+      id={die.id}
+      value={die.num}
+      handleClick={pickDie}
+      isPicked={die.isPicked}
     />
   );
 
@@ -91,18 +111,25 @@ function App() {
   }, [gameWon]);
 
   return (
-    <>
+    <div className='lay'>
       {gameWon && <Confetti />}
       {gameWon && <img src={gif} className='winning-img' alt="Winning celebration" />}
       <div className='container' onClick={finishWinningAnimation}>
         <h1>Tenzies</h1>
         <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-        <div className='dice-container'>
-          {diceElements}
+        <div className='play-area'>
+          <div className='dice-container'>
+            {diceElements}
+          </div>
+          <div className='stats'>
+            <Timer handleClick={rollDice} isRunning={isRunning} />
+            <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
+          </div>
         </div>
-        <button onClick={rollDice}> {gameWon ? "New Game" : "Roll"}</button>
+        <button onClick={rollDice}> {
+          gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
       </div>
-    </>
+    </div>
   )
 }
 
