@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Confetti from "react-confetti"
 import sound from './assets/win.mp3';
 import gif from './assets/winningGif.gif';
-import {generateTenDice, generateNewDie} from './utils'
+import { generateTenDice, generateNewDie } from './utils'
 import Timer from './Timer/Timer';
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
   // Roll all dice that are not picked. If the game has been won, reset it.
   function rollDice() {
     //🥳New game state
-    if(gameWon===null){
+    if (gameWon === null) {
       setGameWon(false)
       setDiceArray(generateTenDice());
       setIsRunning(true)
@@ -111,7 +111,7 @@ function App() {
   }, [gameWon]);
 
   return (
-    <>
+    <div className='lay'>
       {gameWon && <Confetti />}
       {gameWon && <img src={gif} className='winning-img' alt="Winning celebration" />}
       <div className='container' onClick={finishWinningAnimation}>
@@ -122,10 +122,12 @@ function App() {
         </div>
         <button onClick={rollDice}> {
           gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
-        <h2>{rollCount}</h2>
-        <Timer handleClick={rollDice} isRunning={isRunning} />
       </div>
-    </>
+      <div className='stats'>
+          <Timer handleClick={rollDice} isRunning={isRunning} />
+          <h2>{rollCount}</h2>
+        </div>
+    </div>
   )
 }
 
