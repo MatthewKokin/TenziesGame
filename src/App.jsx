@@ -124,9 +124,9 @@ function App() {
           gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
       </div>
       <div className='stats'>
-          <Timer handleClick={rollDice} isRunning={isRunning} />
-          <h2>{rollCount}</h2>
-        </div>
+        <Timer handleClick={rollDice} isRunning={isRunning} />
+        <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
+      </div>
     </div>
   )
 }

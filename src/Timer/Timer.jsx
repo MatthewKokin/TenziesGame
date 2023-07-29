@@ -28,9 +28,8 @@ function Timer({ isRunning }) {
   const time = (passedTime / 1000).toFixed(3)
 
   return (
-    <div>
-      <h2>Time</h2>
-      <p>{time}</p>
+    <div className='timer-container'>
+      <h2 className='timer'>Time: {time}s ⏰</h2>
     </div>
   )
 }
