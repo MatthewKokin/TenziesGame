@@ -33,13 +33,6 @@ body {
     justify-content: space-evenly;
 }
 
-.lay{
-    display: flex;
-    /* height: 400px;
-    max-width: 800px; */
-    border-radius: 0 0 5px 5px;
-}
-
 .main{
  background-color: #F5F5F5;
 }
@@ -62,7 +55,7 @@ body {
 }
 
 
-.container h1 {
+.field h1 {
     margin: 0px;
     font-size: 26px;
     font-weight: 700;
@@ -71,7 +64,7 @@ body {
     text-align: center;
 }
 
-.container p {
+.field p {
     margin: 0px;
     width: 80%;
     font-size: 20px;
@@ -83,7 +76,7 @@ body {
 }
 
 /* Button styles */
-.container button, .rolls {
+.field button, .rolls {
     font-size: 16px;
     font-weight: 700;
     line-height: 19px;
@@ -96,12 +89,12 @@ body {
       /* changed scale to transform */
 }
 
-.container button {
+.field button {
     cursor: pointer;
     transform: scale(1.5);
 }
 
-.container button:active {
+.field button:active {
     box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
     transform: scale(1.45);  /* changed scale to transform */
 }
