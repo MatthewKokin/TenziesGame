@@ -93,16 +93,31 @@ function Home() {
   useEffect(() => {
     gameWon ? playAudio() : stopAudio();
   }, [gameWon]);
+  
+  const addsEl = (
+    <div className="col-sm-2 sidenav p-0 bg-info-subtle">
+      <div className="well"><p>ADS</p></div>
+      <div className="well"><p>ADS</p></div>
+      <div className="well"><p>ADS</p></div>
+      <div className="well"><p>ADS</p></div>
+    </div>
+  )
 
-  return (
-    <>
-      <div className="container-fluid text-center p-0">
-        <div className="row content">
-          <div className="col-sm-2 sidenav p-0 .bg-primary-subtle">
+    const linkEl = (
+      <div className="col-sm-2 sidenav p-0 bg-info-subtle">
+            <p><a href="#">Link</a></p>
             <p><a href="#">Link</a></p>
             <p><a href="#">Link</a></p>
             <p><a href="#">Link</a></p>
           </div>
+    )
+  
+
+  return (
+    <>
+      <div className="container-fluid text-center p-0 main">
+        <div className="row content">
+          {linkEl}
           <div className="col-sm-8 text-left p-0">
             <div className='lay'>
               {gameWon && <Confetti />}
@@ -124,14 +139,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="col-sm-2 sidenav p-0 .bg-primary-subtle">
-            <div className="well">
-              <p>ADS</p>
-            </div>
-            <div className="well">
-              <p>ADS</p>
-            </div>
-          </div>
+          {addsEl}
         </div>
       </div>
     </>

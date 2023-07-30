@@ -38,9 +38,11 @@ body {
     /* height: 400px;
     max-width: 800px; */
     border-radius: 0 0 5px 5px;
-    background-color: #F5F5F5;
 }
 
+.main{
+ background-color: #F5F5F5;
+}
 .stats{
     margin-left: 20px;
     display: flex;
