@@ -25,13 +25,12 @@ function Timer({ isRunning }) {
     return () => clearInterval(interval);
   }, [isRunning, passedTime]);
 
-  const time = (passedTime / 1000).toFixed(3)
+  const time = (passedTime / 1000).toFixed(1)
 
   return (
     <div className='timer-container'>
       <div className='timer'>
-        <h2>⏰ Time:</h2>
-        <h2>{time}s</h2>
+        <h3>⏰ Time: {time}s</h3>
       </div>
     </div>
   )

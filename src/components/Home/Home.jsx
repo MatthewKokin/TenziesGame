@@ -103,37 +103,28 @@ function Home() {
     </div>
   )
 
-  const linkEl = (
-    <div className="col-sm-2 sidenav p-0 bg-info-subtle">
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-    </div>
-  )
-
 
   return (
     <>
       <div className="container-fluid text-center p-0 main">
         <div className="row content">
-          {linkEl}
+          {addsEl}
           <div className=" field row col-sm-8 text-left p-0" onClick={finishWinningAnimation}>
-              {gameWon && <Confetti />}
-              {gameWon && <img src={gif} className='winning-img' alt="Winning celebration" />}
-                <h1 className='row'>Tenzies</h1>
-                <p className='row'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-                <div className='play-area row'>
-                  <div className='dice-container col-8'>
-                    {diceElements}
-                  </div>
-                  <div className='stats col-4'>
-                    <Timer handleClick={rollDice} isRunning={isRunning} />
-                    <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
-                  </div>
-                </div>
-                <button onClick={rollDice}> {
-                  gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
+            {gameWon && <Confetti />}
+            {gameWon && <img src={gif} className='winning-img' alt="Winning celebration" />}
+            <h1 className='row'>Tenzies</h1>
+            <p className='row'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+            <div className='play-area row'>
+              <div className='stats col-4 d-flex flex-row flex-md-column'>
+                <Timer handleClick={rollDice} isRunning={isRunning} />
+                <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
+              </div>
+              <div className='dice-container col-md-8 col-12'>
+                {diceElements}
+              </div>
+            </div>
+            <button onClick={rollDice}> {
+              gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
           </div>
           {addsEl}
         </div>

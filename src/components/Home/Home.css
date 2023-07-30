@@ -37,7 +37,13 @@ body {
  background-color: #F5F5F5;
 }
 .stats{
-    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.field{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,28 +56,11 @@ body {
     align-items: center;
     justify-content: space-evenly;
     background-color: #D3CDFE;
-    padding: 30px;
     border-radius: 10px;
 }
 
 
-.field h1 {
-    margin: 0px;
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 30px;
-    letter-spacing: -0.03em;
-    text-align: center;
-}
-
 .field p {
-    margin: 0px;
-    width: 80%;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 25px;
-    letter-spacing: -0.03em;
-    text-align: center;
     color: #4A4E74;
 }
 
