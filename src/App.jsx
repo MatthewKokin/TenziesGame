@@ -8,6 +8,7 @@ import Home from './components/Home/Home';
 function App() {
   return (
     <BrowserRouter>
+    <div className='container-fluid p-0'>
       <nav className='navbar nav-custom'>
         <h2 className='nav-link badge bg-primary logo'>Tenzies</h2>
         <Link to="/" className='nav-link'>Home</Link>
@@ -15,6 +16,7 @@ function App() {
         <Link to="/computer" className='nav-link'>Computer</Link>
         <Link to="/ruler" className='nav-link'>Rules</Link>
       </nav>
+    </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/leaderboard" element={< Leaderboard/>} />

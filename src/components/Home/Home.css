@@ -8,10 +8,7 @@
 body {
     position: relative;
     font-family: 'Inter', sans-serif;
-    padding: 20px;
     margin: 0;
-    display: flex;
-    justify-content: center;
     background-color: #0B2434;
 }
 
@@ -38,8 +35,8 @@ body {
 
 .lay{
     display: flex;
-    height: 400px;
-    max-width: 800px;
+    /* height: 400px;
+    max-width: 800px; */
     border-radius: 0 0 5px 5px;
     background-color: #F5F5F5;
 }

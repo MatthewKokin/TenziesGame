@@ -95,25 +95,46 @@ function Home() {
   }, [gameWon]);
 
   return (
-      <div className='lay'>
-        {gameWon && <Confetti />}
-        {gameWon && <img src={gif} className='winning-img' alt="Winning celebration" />}
-        <div className='container' onClick={finishWinningAnimation}>
-          <h1>Tenzies</h1>
-          <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-          <div className='play-area'>
-            <div className='dice-container'>
-              {diceElements}
-            </div>
-            <div className='stats'>
-              <Timer handleClick={rollDice} isRunning={isRunning} />
-              <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
+    <>
+      <div className="container-fluid text-center p-0">
+        <div className="row content">
+          <div className="col-sm-2 sidenav p-0 .bg-primary-subtle">
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+          </div>
+          <div className="col-sm-8 text-left p-0">
+            <div className='lay'>
+              {gameWon && <Confetti />}
+              {gameWon && <img src={gif} className='winning-img' alt="Winning celebration" />}
+              <div className='container p-0' onClick={finishWinningAnimation}>
+                <h1>Tenzies</h1>
+                <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+                <div className='play-area'>
+                  <div className='dice-container'>
+                    {diceElements}
+                  </div>
+                  <div className='stats'>
+                    <Timer handleClick={rollDice} isRunning={isRunning} />
+                    <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
+                  </div>
+                </div>
+                <button onClick={rollDice}> {
+                  gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
+              </div>
             </div>
           </div>
-          <button onClick={rollDice}> {
-            gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
+          <div className="col-sm-2 sidenav p-0 .bg-primary-subtle">
+            <div className="well">
+              <p>ADS</p>
+            </div>
+            <div className="well">
+              <p>ADS</p>
+            </div>
+          </div>
         </div>
       </div>
+    </>
   )
 }
 
