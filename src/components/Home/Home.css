@@ -50,7 +50,6 @@ body {
     justify-content:space-evenly;
     border: 1px solid red;
     height: 350px;
-    max-width: 600px;
 }
 
 .play-area{
