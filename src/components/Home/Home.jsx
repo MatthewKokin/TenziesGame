@@ -119,12 +119,11 @@ function Home() {
                 <Timer handleClick={rollDice} isRunning={isRunning} />
                 <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
               </div>
-              <div className='dice-container col-md-8 col-12'>
+              <div className='dice-container col-md-8'>
                 {diceElements}
               </div>
             </div>
-            <button onClick={rollDice}> {
-              gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
+            <button onClick={rollDice}> {gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
           </div>
           {addsEl}
         </div>

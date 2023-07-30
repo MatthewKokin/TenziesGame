@@ -47,7 +47,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content:space-evenly;
+    border: 1px solid red;
+    height: 350px;
+    max-width: 600px;
 }
 
 .play-area{
@@ -60,12 +63,30 @@ body {
 }
 
 
+.field h1 {
+    margin: 0px;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: -0.03em;
+    text-align: center;
+    border: 1px solid green;
+}
+
 .field p {
+    margin: 0px;
+    width: 80%;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: -0.03em;
+    text-align: center;
     color: #4A4E74;
 }
 
 /* Button styles */
 .field button, .rolls {
+    width: 10rem;
     font-size: 16px;
     font-weight: 700;
     line-height: 19px;
@@ -75,7 +96,6 @@ body {
     border: none;
     border-radius: 4px;
     padding: 5.76px 21.12px 6.1px 21.21px;
-      /* changed scale to transform */
 }
 
 .field button {
