@@ -5,6 +5,7 @@ import Computer from './components/Computer/Computer';
 import Rules from './components/Rules/Rules';
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
+import Multiplayer from './components/Multiplayer/Multiplayer';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/multiplayer" element={<Multiplayer/>} />
         <Route path="/leaderboard" element={< Leaderboard />} />
         <Route path="/computer" element={< Computer />} />
         <Route path="/ruler" element={< Rules />} />
