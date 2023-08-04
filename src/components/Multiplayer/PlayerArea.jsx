@@ -9,7 +9,8 @@ function PlayerArea({
     rollCount,
     setRollCount,
     pickDie,
-    rollDice
+    rollDice,
+    userName
 }) {
     const diceElements = diceArray.map(die =>
         <Die
@@ -25,7 +26,7 @@ function PlayerArea({
         <>
             <div className='play-area col-5'>
                 <div className='stats d-flex flex-row flex-md-column'>
-                    <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
+                    <h2 className='rolls'>{userName}: {rollCount} 🎲</h2>
                 </div>
                 <div className='dice-container mb-3'>
                     {diceElements}

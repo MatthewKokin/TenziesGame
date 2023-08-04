@@ -103,7 +103,7 @@ function Home() {
           <div className=" field row col-sm-8 text-left p-0" onClick={finishWinningAnimation}>
             {gameWon && <Confetti />}
             {gameWon && <img src={gif} className='winning-img' alt="Winning celebration" />}
-            <h1 className='row'>Tenzies</h1>
+            <h1 className='row ml-a mr-a'>Tenzies</h1>
             <p className='row'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
             <div className='play-area row'>
               <div className='stats col-4 d-flex flex-row flex-md-column'>

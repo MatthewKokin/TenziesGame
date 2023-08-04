@@ -6,8 +6,8 @@
 
 /* Button styles */
 .play-area button {
-    width: 10rem;
-    font-size: 12px;
+    width: 12rem;
+    font-size: 18px;
     font-weight: 700;
     line-height: 19px;
     text-align: center;
@@ -15,7 +15,7 @@
     color: white;
     border: none;
     border-radius: 4px;
-    padding: 3.76px 10.12px 4.1px 10.21px;
+    padding: 6.76px 20.12px 6.1px 20.21px;
 }
 
 .play-area button {
@@ -24,5 +24,5 @@
 
 .play-area button:active {
     box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
-    transform: scale(1.45);  /* changed scale to transform */
+    transform: scale(0.9);  /* changed scale to transform */
 }

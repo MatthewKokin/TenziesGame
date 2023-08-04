@@ -97,12 +97,12 @@ body {
 
 .field button {
     cursor: pointer;
-    transform: scale(1.5);
+    transform: scale(1);
 }
 
 .field button:active {
     box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
-    transform: scale(1.45);  /* changed scale to transform */
+    transform: scale(0.9);  /* changed scale to transform */
 }
 
 

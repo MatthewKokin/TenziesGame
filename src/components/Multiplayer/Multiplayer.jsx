@@ -59,8 +59,7 @@ export default function Multiplayer() {
                 <div className="row content">
                     {addsEl}
                     <div className=" field col-sm-8 text-left p-0">
-                        <h1 className='row'>Tenzies</h1>
-                        <p className='row'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+                        <h1 className='row'>😱 Multiplayer 😱</h1>
 
                         <div className='players-area row d-flex justify-content-around'>
                             {/* Player 1 */}
@@ -73,6 +72,7 @@ export default function Multiplayer() {
                                 setRollCount={setRollCountPlayer1}
                                 pickDie={pickDie}
                                 rollDice={rollDice}
+                                userName={"You"}
                             />
                             {/* Player 2 */}
                             <PlayerArea
@@ -84,6 +84,7 @@ export default function Multiplayer() {
                                 setRollCount={setRollCountPlayer2}
                                 pickDie={pickDie}
                                 rollDice={rollDice}
+                                userName={"Bob2010"}
                             />
                         </div>
 
