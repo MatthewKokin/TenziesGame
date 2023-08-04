@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import Confetti from "react-confetti"
 import sound from '../../assets/win.mp3';
 import gif from '../../assets/winningGif.gif';
-import { generateTenDice, generateNewDie } from '../../utils'
+import { generateTenDice, generateNewDie, addsEl } from '../../utils'
 import Die from '../Die/Die';
 import Timer from '../Timer/Timer';
 
@@ -94,16 +94,7 @@ function Home() {
     gameWon ? playAudio() : stopAudio();
   }, [gameWon]);
 
-  const addsEl = (
-    <div className="col-sm-2 sidenav p-0 bg-info-subtle">
-      <div className="well"><p>ADS</p></div>
-      <div className="well"><p>ADS</p></div>
-      <div className="well"><p>ADS</p></div>
-      <div className="well"><p>ADS</p></div>
-    </div>
-  )
-
-
+  
   return (
     <>
       <div className="container-fluid text-center p-0 main">
