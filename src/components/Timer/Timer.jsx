@@ -29,9 +29,7 @@ function Timer({ isRunning }) {
 
   return (
     <div className='timer-container'>
-      <div className='timer'>
         <h3>⏰ Time: {time}s</h3>
-      </div>
     </div>
   )
 }

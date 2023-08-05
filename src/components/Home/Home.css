@@ -47,7 +47,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content:space-evenly;
-    height: 450px;
 }
 
 .play-area{
@@ -64,7 +63,7 @@ body {
 .field h1 {
     display: block;
     margin: 0px;
-    font-size: 26px;
+    font-size: 6vw;
     font-weight: 700;
     line-height: 30px;
     letter-spacing: -0.03em;
@@ -74,7 +73,7 @@ body {
 .field p {
     margin: 0em;
     width: 90%;
-    font-size: 1.25rem;
+    font-size: 4vw;
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: -0.03em;
@@ -85,7 +84,7 @@ body {
 /* Button styles */
 .field button, .rolls {
     width: 10rem;
-    font-size: 16px;
+    font-size: 4vw;
     font-weight: 700;
     line-height: 19px;
     text-align: center;
@@ -106,3 +105,8 @@ body {
     transform: scale(0.9);  /* changed scale to transform */
 }
 
+
+
+@media (min-width: 576px) {
+
+}

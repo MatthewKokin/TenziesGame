@@ -1,16 +1,9 @@
 .timer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 200px;
-  margin-bottom: 10px;
-}
-
-.timer {
+  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 4vw;
   font-weight: 700;
   text-align: center;
   background-color: #5035FF;
@@ -19,8 +12,5 @@
   border-radius: 4px;
   padding: 5.76px 21.12px 6.1px 21.21px;
   width: 180px;
-}
-
-.timer h3{
-  font-size: 16px;
+  margin-bottom: 10px;
 }
