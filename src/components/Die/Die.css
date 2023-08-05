@@ -54,9 +54,8 @@
     }
 }
 
-@media (min-width: 768px) {
-    
-}
+@media (min-width: 768px) {}
+
 @media (min-width: 992px) {
     .die-face {
         height: 100px;
@@ -69,5 +68,7 @@
 
     .dice-container {
         grid-gap: 10px;
+        width: 580px;
+        padding: 0;
     }
 }
