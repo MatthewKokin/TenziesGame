@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 function Navbar() {
     const styles = {backgroundColor: "#D3CDFE"}
     return (
-        <div className='container-fluid p-0'>
+        <div className='navbar-main container-fluid p-0'>
             <nav className="navbar navbar-expand-sm" style={styles}>
                 <div className="container-fluid">
                     <Link to="/" className='navbar-brand'>Tenzies</Link>

@@ -97,20 +97,20 @@ function Home() {
   
   return (
     <>
-      <div className="container-fluid text-center p-0 main">
+      <div className="main container-fluid text-center p-0">
         <div className="row content">
           {addsEl}
           <div className=" field row col-sm-8 text-left p-0" onClick={finishWinningAnimation}>
             {gameWon && <Confetti />}
             {gameWon && <img src={gif} className='winning-img' alt="Winning celebration" />}
-            <h1 className='row ml-a mr-a'>Tenzies</h1>
+            <h1 className='row text-center p-0'>Tenzies</h1>
             <p className='row'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
             <div className='play-area row'>
-              <div className='stats col-4 d-flex flex-row flex-md-column'>
+              <div className='stats'>
                 <Timer handleClick={rollDice} isRunning={isRunning} />
                 <h2 className='rolls'>Rolls: {rollCount} 🎲</h2>
               </div>
-              <div className='dice-container col-md-8'>
+              <div className='dice-container'>
                 {diceElements}
               </div>
             </div>
