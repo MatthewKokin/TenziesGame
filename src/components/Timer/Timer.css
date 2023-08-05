@@ -20,3 +20,9 @@
     font-size: 1.5rem;
   }
 }
+
+@media (min-width: 992px) {
+  .timer-container h3 {
+    font-size: 2rem;
+  }
+}

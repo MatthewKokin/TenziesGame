@@ -57,3 +57,17 @@
 @media (min-width: 768px) {
     
 }
+@media (min-width: 992px) {
+    .die-face {
+        height: 100px;
+        width: 100px;
+    }
+
+    .die-num {
+        font-size: 60px;
+    }
+
+    .dice-container {
+        grid-gap: 10px;
+    }
+}
