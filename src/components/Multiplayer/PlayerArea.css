@@ -1,11 +1,7 @@
-.play-area{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
+
 
 /* Button styles */
-.play-area button {
+.playing-area button {
     width: 12rem;
     font-size: 18px;
     font-weight: 700;

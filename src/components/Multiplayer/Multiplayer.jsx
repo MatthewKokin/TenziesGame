@@ -1,3 +1,4 @@
+import './Multiplayer.css'
 import { useEffect, useState } from "react";
 import PlayerArea from "./PlayerArea";
 import { generateTenDice, generateNewDie, addsEl } from '../../utils'
@@ -58,10 +59,10 @@ export default function Multiplayer() {
             <div className="container-fluid text-center p-0 main">
                 <div className="row content">
                     {addsEl}
-                    <div className=" field col-sm-8 text-left p-0">
+                    <div className="playing-field col-lg-8 text-left p-0">
                         <h1 className='row'>😱 Multiplayer 😱</h1>
 
-                        <div className='players-area row d-flex justify-content-around'>
+                        <div className='main-players-area row'>
                             {/* Player 1 */}
                             <PlayerArea
                                 diceArray={diceArrayPlayer1}

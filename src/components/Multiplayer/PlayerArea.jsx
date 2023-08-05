@@ -24,14 +24,13 @@ function PlayerArea({
 
     return (
         <>
-            <div className='play-area col-5'>
-                <div className='stats d-flex flex-row flex-md-column'>
+            <div className='playing-area col-5'>
+                <div className='statistic d-flex flex-row flex-md-column'>
                     <h2 className='rolls'>{userName}: {rollCount} 🎲</h2>
                 </div>
                 <div className='dice-container mb-3'>
                     {diceElements}
                 </div>
-                <button onClick={rollDice}> {gameWon === null ? "🥳 New game" : (gameWon === false ? "🎲 Roll" : "🥲 Finish")}</button>
             </div>
         </>
     )
