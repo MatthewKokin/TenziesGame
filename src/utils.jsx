@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-export {generateTenDice, generateNewDie}
+export {generateTenDice, generateNewDie, addsEl}
 
 // Generates an array of 10 new dice
 function generateTenDice() {
@@ -14,3 +14,12 @@ function generateNewDie() {
         id: nanoid()
     }
 }
+
+const addsEl = (
+    <div className="col-md-2 sidenav p-0 bg-info-subtle">
+      <div className="well"><p>ADS</p></div>
+      <div className="well"><p>ADS</p></div>
+      <div className="well"><p>ADS</p></div>
+      <div className="well"><p>ADS</p></div>
+    </div>
+  )

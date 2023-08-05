@@ -6,7 +6,7 @@ function Die(props) {
     return (
         <>
             <div className='die-face' style={styles} onClick={()=> props.handleClick(props.id, props.value)}>
-                <h2 className="die-num">{props.value}</h2>
+                <h2 className="mb-0 die-num">{props.value}</h2>
             </div>
         </>
     )
