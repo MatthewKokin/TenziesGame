@@ -8,10 +8,7 @@
 body {
     position: relative;
     font-family: 'Inter', sans-serif;
-    padding: 20px;
     margin: 0;
-    display: flex;
-    justify-content: center;
     background-color: #0B2434;
 }
 
@@ -36,75 +33,136 @@ body {
     justify-content: space-evenly;
 }
 
-.lay{
+.main{
+ background-color: #F5F5F5;
+}
+.stats{
     display: flex;
-    height: 400px;
-    max-width: 800px;
-    border-radius: 0 0 5px 5px;
-    background-color: #F5F5F5;
+    align-items: center;
+    justify-content: space-around;
 }
 
-.stats{
-    margin-left: 20px;
+.field{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content:space-evenly;
 }
 
 .play-area{
-    /* border: 1px solid green; */
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     background-color: #D3CDFE;
-    padding: 30px;
     border-radius: 10px;
+    padding: 20px 50px;
 }
 
 
-.container h1 {
-    margin: 0px;
-    font-size: 26px;
+.field h1 {
+    display: block;
+    margin: 2vw;
+    margin-bottom: 0;
+    font-size: 6vw;
     font-weight: 700;
     line-height: 30px;
     letter-spacing: -0.03em;
     text-align: center;
 }
 
-.container p {
-    margin: 0px;
-    width: 80%;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 25px;
-    letter-spacing: -0.03em;
+.field p {
     text-align: center;
+    margin: 2vw;
+    width: 90%;
+    font-size: 4vw;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.03em;
     color: #4A4E74;
 }
 
 /* Button styles */
-.container button, .rolls {
-    font-size: 16px;
+.field button, .rolls {
+    font-size: 4vw;
     font-weight: 700;
-    line-height: 19px;
+    line-height: 1.5;
     text-align: center;
     background-color: #5035FF;
     color: white;
     border: none;
     border-radius: 4px;
     padding: 5.76px 21.12px 6.1px 21.21px;
-      /* changed scale to transform */
 }
 
-.container button {
+.field button {
+    width: 90%;
     cursor: pointer;
-    transform: scale(1.5);
+    transform: scale(1);
+    margin: 1vw;
 }
 
-.container button:active {
+.field button:active {
     box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
-    transform: scale(1.45);  /* changed scale to transform */
+    transform: scale(0.9);  /* changed scale to transform */
 }
 
 
+@media (min-width: 576px) and (max-width: 768px){
+    
+}
+
+@media (min-width: 768px) {
+    .field h1 {
+        font-size: 2.5rem;
+        margin: 0.5em;
+        margin-bottom: 0;
+    }
+    
+    .field p {
+        margin: 0.5em;
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+    
+    /* Button styles */
+    .field button, .rolls {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.5;
+        text-align: center;
+        background-color: #5035FF;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5.76px 21.12px 6.1px 21.21px;
+    }
+    
+    .field button {
+        width: 40%;
+        cursor: pointer;
+        transform: scale(1);
+        margin: 1vw;
+    }
+
+}
+
+
+@media (min-width: 992px){
+    .field h1 {
+        font-size: 3rem;
+    }
+    
+    .field p {
+        font-size: 1.5rem;
+    }
+    
+    /* Button styles */
+    .field button, .rolls {
+        font-size: 2rem;
+    }
+    
+    .field button {
+        width: 40%;
+    }
+}
