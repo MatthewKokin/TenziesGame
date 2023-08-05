@@ -16,7 +16,7 @@ function generateNewDie() {
 }
 
 const addsEl = (
-    <div className="col-sm-2 sidenav p-0 bg-info-subtle">
+    <div className="col-md-2 sidenav p-0 bg-info-subtle">
       <div className="well"><p>ADS</p></div>
       <div className="well"><p>ADS</p></div>
       <div className="well"><p>ADS</p></div>

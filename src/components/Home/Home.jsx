@@ -100,7 +100,7 @@ function Home() {
       <div className="main container-fluid text-center p-0">
         <div className="row content">
           {addsEl}
-          <div className=" field row col-sm-8 text-left p-0" onClick={finishWinningAnimation}>
+          <div className=" field row col-md-8 text-left p-0" onClick={finishWinningAnimation}>
             {gameWon && <Confetti />}
             {gameWon && <img src={gif} className='winning-img' alt="Winning celebration" />}
             <h1 className='row text-center p-0'>Tenzies</h1>
