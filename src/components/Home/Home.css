@@ -62,7 +62,7 @@ body {
 
 .field h1 {
     display: block;
-    margin: 0px;
+    margin: 2vw;
     font-size: 6vw;
     font-weight: 700;
     line-height: 30px;
@@ -71,7 +71,7 @@ body {
 }
 
 .field p {
-    margin: 0em;
+    margin: 2vw;
     width: 90%;
     font-size: 4vw;
     font-weight: 400;
@@ -83,10 +83,9 @@ body {
 
 /* Button styles */
 .field button, .rolls {
-    width: 10rem;
     font-size: 4vw;
     font-weight: 700;
-    line-height: 19px;
+    line-height: 1.5;
     text-align: center;
     background-color: #5035FF;
     color: white;
@@ -96,8 +95,10 @@ body {
 }
 
 .field button {
+    width: 90%;
     cursor: pointer;
     transform: scale(1);
+    margin: 1vw;
 }
 
 .field button:active {
