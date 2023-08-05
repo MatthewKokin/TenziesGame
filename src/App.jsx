@@ -6,10 +6,12 @@ import Rules from './components/Rules/Rules';
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import Multiplayer from './components/Multiplayer/Multiplayer';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <BrowserRouter>
+    <div className='all'>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -18,6 +20,8 @@ function App() {
         <Route path="/computer" element={< Computer />} />
         <Route path="/ruler" element={< Rules />} />
       </Routes>
+      <Footer/>
+    </div>
     </BrowserRouter>
   )
 }
